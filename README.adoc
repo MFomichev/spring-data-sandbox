@@ -1,0 +1,4 @@
+= Spring Data Sandbox
+
+Sandbox project for experiments with https://spring.io/projects/spring-data[Spring Data]
+
