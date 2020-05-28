@@ -8,6 +8,6 @@ import xyz.fomichev.sandbox.repository.BookRepository;
 @RequiredArgsConstructor
 public class BookService {
 
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
 }

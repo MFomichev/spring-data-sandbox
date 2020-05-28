@@ -18,13 +18,9 @@ public class BaseTest {
     @Autowired
     private ApplicationContext context;
 
-    @Autowired
-    private BookRepository bookRepository;
-
     @Test
     void contextLoads() {
-        assertNotNull(context.getBeansOfType(BookService.class));
-        assertNotNull(context.getBeansOfType(BookRepository.class));
-        assertEquals(0, bookRepository.findAll().size());
+        assertEquals(1, context.getBeansOfType(BookRepository.class).size());
+        assertEquals(1, context.getBeansOfType(BookService.class).size());
     }
 }
