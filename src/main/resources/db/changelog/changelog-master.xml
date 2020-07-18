@@ -8,4 +8,6 @@
     <include file="db/changelog/scripts/20200712-1-create-book-table.xml"/>
     <include file="db/changelog/scripts/20200712-2-create-reading-session-table.xml"/>
     <include file="db/changelog/scripts/20200718-1-create-author-table.xml"/>
+    <include file="db/changelog/scripts/20200718-2-create-student-table.xml"/>
+    <include file="db/changelog/scripts/20200718-3-alter-reading-session-table.xml"/>
 </databaseChangeLog>

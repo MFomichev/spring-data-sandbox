@@ -4,6 +4,8 @@ import java.time.Instant;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -22,4 +24,8 @@ public class ReadingSession {
 
     @NonNull
     private Instant startTime;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 }
