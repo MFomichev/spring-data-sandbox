@@ -12,7 +12,6 @@ import xyz.fomichev.sandbox.repository.BookRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Transactional
 public class BookRepositoryTest extends BaseTest {
 
     @Autowired

@@ -5,13 +5,11 @@ import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import xyz.fomichev.sandbox.model.ReadingSession;
 import xyz.fomichev.sandbox.repository.ReadingSessionRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Rollback
 public class ReadingSessionRepositoryTest extends BaseTest {
 
     private UUID readingSessionId = UUID.fromString("ef76da29-9e8a-4c49-a7e5-93c926521198");
