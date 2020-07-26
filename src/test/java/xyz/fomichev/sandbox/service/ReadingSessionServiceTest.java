@@ -1,10 +1,11 @@
-package xyz.fomichev.sandbox;
+package xyz.fomichev.sandbox.service;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import xyz.fomichev.sandbox.BaseTest;
 import xyz.fomichev.sandbox.model.ReadingSession;
 import xyz.fomichev.sandbox.repository.ReadingSessionRepository;
 

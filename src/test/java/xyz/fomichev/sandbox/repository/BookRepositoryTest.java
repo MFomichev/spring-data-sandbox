@@ -1,4 +1,4 @@
-package xyz.fomichev.sandbox;
+package xyz.fomichev.sandbox.repository;
 
 import java.util.UUID;
 import org.junit.jupiter.api.MethodOrderer;
@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import xyz.fomichev.sandbox.BaseTest;
 import xyz.fomichev.sandbox.model.Book;
 import xyz.fomichev.sandbox.repository.BookRepository;
 
