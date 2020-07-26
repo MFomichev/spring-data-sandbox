@@ -4,16 +4,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import xyz.fomichev.sandbox.BaseTest;
+import xyz.fomichev.sandbox.TestDataCreator;
 import xyz.fomichev.sandbox.model.Student;
-import xyz.fomichev.sandbox.repository.StudentRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static xyz.fomichev.sandbox.TestDataFactory.aStudent;
 
 class StudentServiceTest extends BaseTest {
 
     @Autowired
-    private StudentRepository studentRepository;
+    private TestDataCreator testDataCreator;
     @Autowired
     private StudentService studentService;
 
@@ -21,8 +20,7 @@ class StudentServiceTest extends BaseTest {
 
     @BeforeEach
     void setUp() {
-        Student student = aStudent().build();
-        this.student = studentRepository.save(student);
+        this.student = testDataCreator.student();
     }
 
     @Test
