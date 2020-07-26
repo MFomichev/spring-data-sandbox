@@ -4,13 +4,17 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
 @Entity
 @Setter
 @Getter
+@Builder
+@NoArgsConstructor
 public class Student {
     @Id
     @NonNull
