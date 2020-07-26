@@ -10,7 +10,7 @@ import xyz.fomichev.sandbox.repository.ReadingSessionRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ReadingSessionRepositoryTest extends BaseTest {
+public class ReadingSessionServiceTest extends BaseTest {
 
     private UUID readingSessionId = UUID.fromString("ef76da29-9e8a-4c49-a7e5-93c926521198");
     private Instant readingSessionStartDate = Instant.parse("2007-12-03T23:59:59.999999999Z");
