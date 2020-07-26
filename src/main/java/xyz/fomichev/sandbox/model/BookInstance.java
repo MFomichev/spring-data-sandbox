@@ -1,36 +1,34 @@
 package xyz.fomichev.sandbox.model;
 
-import java.time.Instant;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
-import org.hibernate.annotations.Type;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@EqualsAndHashCode
+@AllArgsConstructor
 @NoArgsConstructor
-public class ReadingSession {
+public class BookInstance {
 
     @Id
     @NonNull
     private UUID id;
 
     @NonNull
-    private Instant startTime;
-
     @ManyToOne
-    @JoinColumn(name = "student_id")
-    private Student student;
+    @JoinColumn(name = "book_id")
+    private Book book;
 
-    @NonNull
-    @ManyToOne
-    @JoinColumn(name = "book_instance_id")
-    private BookInstance bookInstance;
 }

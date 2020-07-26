@@ -1,0 +1,22 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="MFomichev>" id="20200726-1-create-book-instance-table">
+        <sql>
+            CREATE TABLE book_instance (
+                id UUID NOT NULL,
+                book_id UUID NOT NULL,
+                PRIMARY KEY (id),
+                CONSTRAINT fk_book FOREIGN KEY(book_id) REFERENCES book(id)
+            );
+
+            ALTER TABLE reading_session ADD book_instance_id UUID NOT NULL;
+
+            ALTER TABLE reading_session
+                ADD CONSTRAINT book_instance_id_fk
+                FOREIGN KEY (book_instance_id)
+                REFERENCES book_instance (id);
+        </sql>
+    </changeSet>
+</databaseChangeLog>
