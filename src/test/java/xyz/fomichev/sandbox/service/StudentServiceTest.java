@@ -31,8 +31,8 @@ class StudentServiceTest extends BaseTest {
     }
 
     @Test
-    void testStartReadWithPersistedStudent() {
-        var readingSession = studentService.startRead(student);
+    void testStartRead() {
+        var readingSession = studentService.startRead(student.getId());
         assertEquals(this.student.getId(), readingSession.getStudent().getId());
     }
 
