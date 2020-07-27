@@ -2,3 +2,18 @@
 
 Sandbox project for experiments with https://spring.io/projects/spring-data[Spring Data]
 
+== Goal
+
+This sandbox helps to understand tricky moments of JPA, Hibernate and Spring Data JPA.
+
+Unfortunately, most of the books and tutorials do not provide deep cover of ORM ecosystem.
+Tests, which are presented in this project, allow tracing and debugging questions or issues that are interesting to me.
+
+=== Disclaimer
+
+* Tests do *not* cover all cases. I do not pursue the goal to provide "good" code coverage.
+* I do not like the idea to use TestContainers and Spring Context for unit testing, however I use here because it shows real JPA behaviour.
+
+=== Some Covered Issues
+
+* saving `java.time.Instant` field into PostgreSQL `timestamp`;
