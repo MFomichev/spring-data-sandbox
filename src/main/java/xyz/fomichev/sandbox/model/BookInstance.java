@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -30,5 +31,8 @@ public class BookInstance {
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
+
+    @Version
+    private Integer version;
 
 }
