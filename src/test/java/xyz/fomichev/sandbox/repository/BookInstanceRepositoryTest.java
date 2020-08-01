@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import xyz.fomichev.sandbox.BaseTest;
 import xyz.fomichev.sandbox.TestDataCreator;
+import xyz.fomichev.sandbox.TransactionalBaseTest;
 import xyz.fomichev.sandbox.model.Book;
 import xyz.fomichev.sandbox.model.BookInstance;
 
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static xyz.fomichev.sandbox.TestDataFactory.aBookInstance;
 
 
-class BookInstanceRepositoryTest extends BaseTest {
+class BookInstanceRepositoryTest extends TransactionalBaseTest {
 
     @Autowired
     BookInstanceRepository bookInstanceRepository;

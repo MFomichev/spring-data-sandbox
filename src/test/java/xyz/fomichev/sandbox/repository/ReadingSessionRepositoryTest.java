@@ -7,15 +7,15 @@ import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import xyz.fomichev.sandbox.BaseTest;
 import xyz.fomichev.sandbox.TestDataCreator;
+import xyz.fomichev.sandbox.TransactionalBaseTest;
 import xyz.fomichev.sandbox.model.BookInstance;
 import xyz.fomichev.sandbox.model.ReadingSession;
 import xyz.fomichev.sandbox.model.Student;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ReadingSessionRepositoryTest extends BaseTest {
+public class ReadingSessionRepositoryTest extends TransactionalBaseTest {
 
     private UUID readingSessionId = UUID.fromString("ef76da29-9e8a-4c49-a7e5-93c926521198");
     private Instant readingSessionStartDate = Instant.parse("2007-12-03T23:59:59.999999999Z");

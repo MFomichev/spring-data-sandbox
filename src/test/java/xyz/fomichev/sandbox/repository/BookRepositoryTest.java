@@ -1,19 +1,14 @@
 package xyz.fomichev.sandbox.repository;
 
 import java.util.UUID;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-import xyz.fomichev.sandbox.BaseTest;
+import xyz.fomichev.sandbox.TransactionalBaseTest;
 import xyz.fomichev.sandbox.model.Book;
-import xyz.fomichev.sandbox.repository.BookRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BookRepositoryTest extends BaseTest {
+public class BookRepositoryTest extends TransactionalBaseTest {
 
     @Autowired
     private BookRepository bookRepository;

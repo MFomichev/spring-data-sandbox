@@ -4,8 +4,8 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import xyz.fomichev.sandbox.BaseTest;
 import xyz.fomichev.sandbox.TestDataCreator;
+import xyz.fomichev.sandbox.TransactionalBaseTest;
 import xyz.fomichev.sandbox.model.Book;
 import xyz.fomichev.sandbox.model.BookInstance;
 import xyz.fomichev.sandbox.model.Student;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static xyz.fomichev.sandbox.TestDataFactory.aNewBookInstance;
 
-class StudentServiceTest extends BaseTest {
+class StudentServiceTest extends TransactionalBaseTest {
 
     @Autowired
     private TestDataCreator testDataCreator;
