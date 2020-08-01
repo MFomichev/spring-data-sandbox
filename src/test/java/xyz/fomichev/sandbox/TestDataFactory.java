@@ -3,6 +3,7 @@ package xyz.fomichev.sandbox;
 import java.util.UUID;
 import xyz.fomichev.sandbox.model.Book;
 import xyz.fomichev.sandbox.model.BookInstance;
+import xyz.fomichev.sandbox.model.Quality;
 import xyz.fomichev.sandbox.model.Student;
 
 public class TestDataFactory {
@@ -30,12 +31,14 @@ public class TestDataFactory {
     public static BookInstance.BookInstanceBuilder aBookInstance(Book book) {
         return BookInstance.builder()
                 .id(BOOK_INSTANCE_ID)
-                .book(book);
+                .book(book)
+                .quality(Quality.GOOD)
+                ;
     }
 
     public static BookInstance.BookInstanceBuilder aNewBookInstance(Book book) {
-        return BookInstance.builder()
+        return aBookInstance(book)
                 .id(UUID.randomUUID())
-                .book(book);
+                ;
     }
 }
