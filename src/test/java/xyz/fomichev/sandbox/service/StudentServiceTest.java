@@ -36,12 +36,13 @@ class StudentServiceTest extends TransactionalBaseTest {
 
     @Test
     void testStartRead() {
-        var readingSession = studentService.startRead(student.getId(), book.getId());
-        assertEquals(this.student.getId(), readingSession.getStudent().getId());
-        assertTrue(Set.of(
-                this.bookInstance.getId(),
-                this.anotherInstance.getId())
-                .contains(readingSession.getBookInstance().getId()));
+        var readingSession1 = studentService.startRead(student.getId(), book.getId());
+        var readingSession2 = studentService.startRead(student.getId(), book.getId());
+        assertEquals(this.student.getId(), readingSession1.getStudent().getId());
+        assertEquals(this.student.getId(), readingSession2.getStudent().getId());
+        assertEquals(Set.of(this.bookInstance.getId(), this.anotherInstance.getId()),
+                Set.of(readingSession1.getBookInstance().getId(), readingSession2.getBookInstance().getId())
+        );
     }
 
 }

@@ -26,7 +26,7 @@ public class StudentService {
         var student = studentRepository.findById(studentId).orElseThrow();
         var book = bookRepository.findById(bookId).orElseThrow();
         //TODO: lock on book must be here
-        var bookInstance = bookInstanceRepository.findFirstFreeInstanceByBookId(book.getId())
+        var bookInstance = bookInstanceRepository.findFreeInstanceByBookId(book.getId())
                 .orElseThrow(() -> new IllegalArgumentException("No free books"));
 
         ReadingSession readingSession = new ReadingSession();
