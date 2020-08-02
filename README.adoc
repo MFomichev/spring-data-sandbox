@@ -17,3 +17,4 @@ Tests, which are presented in this project, allow tracing and debugging question
 === Some Covered Issues
 
 * saving `java.time.Instant` field into PostgreSQL `timestamp`;
+* emulate two transactions in tests to get Optimistic Lock issue;
