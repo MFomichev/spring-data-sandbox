@@ -13,4 +13,5 @@
     <include file="db/changelog/scripts/20200726-1-create-book-instance-table.xml"/>
     <include file="db/changelog/scripts/20200731-1-alter-book-instance-table.xml"/>
     <include file="db/changelog/scripts/20200801-1-alter-book-instance-table.xml"/>
+    <include file="db/changelog/scripts/20200803-1-alter-reading-session-table.xml"/>
 </databaseChangeLog>

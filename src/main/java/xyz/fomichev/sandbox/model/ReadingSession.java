@@ -25,6 +25,8 @@ public class ReadingSession {
     @NonNull
     private Instant startTime;
 
+    private Instant endTime;
+
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
