@@ -14,9 +14,12 @@ public interface BookInstanceRepository extends JpaRepository<BookInstance, UUID
     @Query(value =
             "FROM BookInstance bookInstance " +
                     "JOIN bookInstance.book book " +
-                    "LEFT JOIN ReadingSession readingSession ON readingSession.bookInstance = bookInstance " +
                     "WHERE bookInstance.book.id = :bookId " +
-                    "AND readingSession IS NULL")
+                    "AND NOT EXISTS (SELECT readingSession" +
+                    "     FROM ReadingSession readingSession " +
+                    "     WHERE readingSession.bookInstance = bookInstance " +
+                    "     AND readingSession.endTime IS NULL)"
+                    )
     List<BookInstance> findFreeInstancesByBookId(UUID bookId, Pageable pageable);
 
     default Optional<BookInstance> findFreeInstanceByBookId(UUID bookId) {

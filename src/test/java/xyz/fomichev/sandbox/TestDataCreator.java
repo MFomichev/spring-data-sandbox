@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import xyz.fomichev.sandbox.model.Book;
 import xyz.fomichev.sandbox.model.BookInstance;
+import xyz.fomichev.sandbox.model.ReadingSession;
 import xyz.fomichev.sandbox.model.Student;
 import xyz.fomichev.sandbox.repository.BookInstanceRepository;
 import xyz.fomichev.sandbox.repository.BookRepository;
+import xyz.fomichev.sandbox.repository.ReadingSessionRepository;
 import xyz.fomichev.sandbox.repository.StudentRepository;
 
-import static xyz.fomichev.sandbox.TestDataFactory.aBook;
-import static xyz.fomichev.sandbox.TestDataFactory.aBookInstance;
-import static xyz.fomichev.sandbox.TestDataFactory.aStudent;
+import static xyz.fomichev.sandbox.TestDataFactory.*;
 
 @Component
 public class TestDataCreator {
@@ -24,6 +24,9 @@ public class TestDataCreator {
 
     @Autowired
     private BookInstanceRepository bookInstanceRepository;
+
+    @Autowired
+    private ReadingSessionRepository readingSessionRepository;
 
     public Student student() {
         return student(aStudent().build());
@@ -47,5 +50,13 @@ public class TestDataCreator {
 
     public BookInstance bookInstance(BookInstance bookInstance) {
         return bookInstanceRepository.saveAndFlush(bookInstance);
+    }
+
+    public ReadingSession readingSession(Student student, BookInstance bookInstance) {
+        return readingSession(aReadingSession(student, bookInstance).build());
+    }
+
+    public ReadingSession readingSession(ReadingSession readingSession) {
+        return readingSessionRepository.saveAndFlush(readingSession);
     }
 }

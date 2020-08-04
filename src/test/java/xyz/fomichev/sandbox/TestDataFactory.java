@@ -1,10 +1,9 @@
 package xyz.fomichev.sandbox;
 
+import java.time.Instant;
 import java.util.UUID;
-import xyz.fomichev.sandbox.model.Book;
-import xyz.fomichev.sandbox.model.BookInstance;
-import xyz.fomichev.sandbox.model.Quality;
-import xyz.fomichev.sandbox.model.Student;
+
+import xyz.fomichev.sandbox.model.*;
 
 public class TestDataFactory {
 
@@ -15,6 +14,8 @@ public class TestDataFactory {
     public static final String BOOK_TITLE = "my best book title";
 
     public static final UUID BOOK_INSTANCE_ID = UUID.fromString("ef76da29-9e8a-4c49-a7e5-93c926684258");
+    public static final UUID READING_SESSION_ID = UUID.fromString("ef76da29-9e8a-4c49-a7e5-93c926522921");
+    public static final Instant READING_SESSION_START_TIME = Instant.ofEpochMilli(1001010);
 
     public static Student.StudentBuilder aStudent() {
         return Student.builder()
@@ -39,6 +40,15 @@ public class TestDataFactory {
     public static BookInstance.BookInstanceBuilder aNewBookInstance(Book book) {
         return aBookInstance(book)
                 .id(UUID.randomUUID())
+                ;
+    }
+
+    public static ReadingSession.ReadingSessionBuilder aReadingSession(Student student, BookInstance bookInstance) {
+        return ReadingSession.builder()
+                .id(READING_SESSION_ID)
+                .startTime(READING_SESSION_START_TIME)
+                .student(student)
+                .bookInstance(bookInstance)
                 ;
     }
 }
