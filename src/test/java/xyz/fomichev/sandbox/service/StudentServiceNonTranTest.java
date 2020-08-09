@@ -67,15 +67,11 @@ class StudentServiceNonTranTest extends NonTransactionalBaseTest {
                 });
         var transaction1 = CompletableFuture.runAsync(() -> {
             synchronized (finishFirstTransaction) {
-                transactionTemplate.executeWithoutResult(status -> {
                     studentService.startRead(studentOne.getId(), book.getId());
-                });
             }
         });
         var transaction2 = CompletableFuture.runAsync(() -> {
-            transactionTemplate.executeWithoutResult(status -> {
                 studentService.startRead(studentTwo.getId(), book.getId());
-            });
         });
         transaction1.get();
         try {
