@@ -29,4 +29,9 @@ public class Author {
 
     @Version
     private Integer version;
+
+    public void addRegalia(Regalia regalia) {
+        getRegalias().add(regalia);
+        regalia.setAuthor(this);
+    }
 }
