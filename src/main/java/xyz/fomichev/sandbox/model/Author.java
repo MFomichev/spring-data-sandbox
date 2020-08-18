@@ -5,13 +5,14 @@ import java.util.List;
 import java.util.UUID;
 import javax.persistence.*;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Setter
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Author {
     @Id
     @NonNull
@@ -25,6 +26,7 @@ public class Author {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @Builder.Default
     private List<Regalia> regalias = new ArrayList<>();
 
     @Version

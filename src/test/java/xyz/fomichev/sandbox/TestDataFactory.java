@@ -16,6 +16,8 @@ public class TestDataFactory {
     public static final UUID BOOK_INSTANCE_ID = UUID.fromString("ef76da29-9e8a-4c49-a7e5-93c926684258");
     public static final UUID READING_SESSION_ID = UUID.fromString("ef76da29-9e8a-4c49-a7e5-93c926522921");
     public static final Instant READING_SESSION_START_TIME = Instant.ofEpochMilli(1001010);
+    public static final UUID AUTHOR_ID = UUID.fromString("ef76da29-9e8a-4c49-a7e5-93c9265ff876");
+    public static final String AUTHOR_LASTNAME = "Author Lastname";
 
     public static Student.StudentBuilder aStudent() {
         return Student.builder()
@@ -50,5 +52,11 @@ public class TestDataFactory {
                 .student(student)
                 .bookInstance(bookInstance)
                 ;
+    }
+
+    public static Author.AuthorBuilder anAuthor() {
+        return Author.builder()
+                .id(AUTHOR_ID)
+                .lastName(AUTHOR_LASTNAME);
     }
 }
