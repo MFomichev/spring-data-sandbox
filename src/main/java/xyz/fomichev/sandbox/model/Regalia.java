@@ -16,7 +16,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Regalia {
+public class Regalia implements RootAware<Author> {
 
     @Id
     @NonNull
@@ -31,4 +31,8 @@ public class Regalia {
     @ManyToOne(fetch = FetchType.LAZY)
     private Author author;
 
+    @Override
+    public Author root() {
+        return getAuthor();
+    }
 }

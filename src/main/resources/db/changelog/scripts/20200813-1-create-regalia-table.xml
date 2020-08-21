@@ -7,7 +7,7 @@
             CREATE TABLE regalia (id uuid not null, title varchar(255), author_id uuid not null, primary key (id),
                 CONSTRAINT fk_author
                 FOREIGN KEY(author_id)
-                REFERENCES author(id)
+                REFERENCES author(id) ON DELETE CASCADE
             )
         </sql>
     </changeSet>

@@ -1,6 +1,5 @@
 package xyz.fomichev.sandbox.repository;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -30,7 +29,7 @@ class AuthorRepositoryNonTranTest extends NonTransactionalBaseTest {
         var updatedAuthor = transactionTemplate.execute(status -> {
             Author author = authorRepository.findById(initialAuthor.getId()).orElseThrow();
             author.addRegalia(Regalia.builder().id(UUID.fromString(REGALIA_ID)).title(REGALIA_TITLE).build());
-            return author;
+            return authorRepository.save(author);
         });
         transactionTemplate.executeWithoutResult(status -> {
             assertThat(authorRepository.getOne(initialAuthor.getId()).getRegalias()).hasSize(1);
