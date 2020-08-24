@@ -12,7 +12,7 @@ Tests, which are presented in this project, allow tracing and debugging question
 === Disclaimer
 
 * Tests do *not* cover all cases. I do not pursue the goal to provide "good" code coverage.
-* I do not like the idea to use TestContainers and Spring Context for unit testing, however I use here because it shows real JPA behaviour.
+* I do not like the idea to use TestContainers and Spring Context for unit testing (both of them should be used for _integration tests_), however I use them here because it shows real JPA behaviour.
 
 === Some Covered Issues
 
