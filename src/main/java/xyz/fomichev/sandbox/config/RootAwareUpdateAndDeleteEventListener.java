@@ -29,7 +29,11 @@ public class RootAwareUpdateAndDeleteEventListener implements FlushEntityEventLi
                 incrementRootVersion(event, root);
             } else if (deleted(event)) {
                 Object root = rootAware.root();
-                if (event.getSession().getPersistenceContext().getEntry(root).getStatus() != Status.DELETED) {
+                if (event.getSession().getPersistenceContext().containsProxy(root)) {
+            //TODO: why event.getSession().getPersistenceContext().getEntry(root) can return null,
+            // when event.getSession().getPersistenceContext().containsProxy(root) is true?
+
+//                if (event.getSession().getPersistenceContext().getEntry(root).getStatus() != Status.DELETED) {
                     incrementRootVersion(event, root);
                 }
             }
