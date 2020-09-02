@@ -3,6 +3,7 @@ package xyz.fomichev.sandbox.config;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
+import org.hibernate.engine.internal.Cascade;
 import org.hibernate.engine.spi.EntityEntry;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.engine.spi.Status;
@@ -24,7 +25,7 @@ public class RootAwareUpdateAndDeleteEventListener implements FlushEntityEventLi
 
         if (mightBeDirty && entity instanceof RootAware) {
             RootAware<?> rootAware = (RootAware<?>) entity;
-            if (updated(event)) {
+            if (!entry.isExistsInDatabase() || updated(event)) {
                 Object root = rootAware.root();
                 incrementRootVersion(event, root);
             } else if (deleted(event)) {

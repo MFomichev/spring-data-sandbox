@@ -39,4 +39,20 @@ class AuthorRepositoryNonTranTest extends NonTransactionalBaseTest {
         });
         assertEquals(1, updatedAuthor.getVersion() - initialVersion);
     }
+
+    @Test
+    void testVersionIncrementWithoutExplicitSaving() {
+        Author initialAuthor = transactionTemplate.execute(status -> authorRepository.save(anAuthor().build()));
+        int initialVersion = initialAuthor.getVersion();
+        var updatedAuthor = transactionTemplate.execute(status -> {
+            Author author = authorRepository.findById(initialAuthor.getId()).orElseThrow();
+            author.addRegalia(Regalia.builder().id(UUID.fromString(REGALIA_ID_1)).title(REGALIA_TITLE_1).build());
+            author.addRegalia(Regalia.builder().id(UUID.fromString(REGALIA_ID_2)).title(REGALIA_TITLE_2).build());
+            return author;
+        });
+        transactionTemplate.executeWithoutResult(status -> {
+            assertThat(authorRepository.getOne(initialAuthor.getId()).getRegalias()).hasSize(2);
+        });
+        assertEquals(1, updatedAuthor.getVersion() - initialVersion);
+    }
 }
