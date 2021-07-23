@@ -3,8 +3,8 @@ package xyz.fomichev.sandbox.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.stubbing.Answer;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.transaction.support.TransactionTemplate;
 import xyz.fomichev.sandbox.NonTransactionalBaseTest;
 import xyz.fomichev.sandbox.TestDataCreator;
@@ -28,9 +28,8 @@ class StudentServiceNonTranTest extends NonTransactionalBaseTest {
 
     public static final UUID SECOND_STUDENT_ID = UUID.fromString("ef76da29-9e8a-4c49-a7e5-93c926593422");
 
-    @Autowired
-    ObjectProvider<BookInstanceRepository> bookInstanceRepository;
-
+    @SpyBean
+    BookInstanceRepository bookInstanceRepository;
     @Autowired
     StudentService studentService;
     @Autowired
@@ -55,8 +54,7 @@ class StudentServiceNonTranTest extends NonTransactionalBaseTest {
     void testStartReadForConcurrentInstanceBook() throws Exception {
         Object finishFirstTransaction = new Object();
         CountDownLatch readLatch = new CountDownLatch(2);
-        var bookInstanceRepositoryMock = this.bookInstanceRepository.getIfAvailable();
-        when(bookInstanceRepositoryMock.findFreeInstanceByBookId(any()))
+        when(bookInstanceRepository.findFreeInstanceByBookId(any()))
                 .thenAnswer((Answer<Optional<BookInstance>>) invocation -> {
                     Optional<BookInstance> result = (Optional<BookInstance>) invocation.callRealMethod();
                     readLatch.countDown();
