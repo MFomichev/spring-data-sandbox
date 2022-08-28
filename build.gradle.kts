@@ -1,7 +1,13 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
 	java
 	id("org.springframework.boot") version "2.7.3"
 	id("io.spring.dependency-management") version "1.0.13.RELEASE"
+	kotlin("plugin.jpa") version "1.7.10"
+	kotlin("plugin.spring") version "1.7.10"
+	kotlin("jvm") version "1.7.10"
+	kotlin("plugin.allopen") version "1.7.10"
 }
 
 group = "xyz.fomichev"
@@ -17,6 +23,10 @@ repositories {
 }
 
 dependencies {
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-aop")
 	implementation("org.springframework.retry:spring-retry")
@@ -33,4 +43,16 @@ dependencies {
 
 tasks.test {
 	useJUnitPlatform();
+}
+
+tasks.withType<KotlinCompile> {
+	kotlinOptions {
+		freeCompilerArgs = listOf("-Xjsr305=strict")
+	}
+}
+
+allOpen {
+	annotation("javax.persistence.Entity")
+	annotation("javax.persistence.Embeddable")
+	annotation("javax.persistence.MappedSuperclass")
 }

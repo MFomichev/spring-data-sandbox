@@ -17,4 +17,5 @@
     <include file="db/changelog/scripts/20200808-1-alter-reading-session-table.xml"/>
     <include file="db/changelog/scripts/20200812-1-alter-author-table.xml"/>
     <include file="db/changelog/scripts/20200813-1-create-regalia-table.xml"/>
+    <include file="db/changelog/scripts/20220828-1-create-client-table.xml"/>
 </databaseChangeLog>

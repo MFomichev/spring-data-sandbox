@@ -1,0 +1,18 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="MFomichev>" id="20220828-1-create-client-table">
+        <sql>
+            CREATE TABLE client
+            (
+                id        UUID NOT NULL,
+                type      VARCHAR(50) not null ,
+                code      VARCHAR(255) not null,
+                last_name VARCHAR(255),
+                title     VARCHAR(255),
+                CONSTRAINT pk_client PRIMARY KEY (id)
+            );
+        </sql>
+    </changeSet>
+</databaseChangeLog>

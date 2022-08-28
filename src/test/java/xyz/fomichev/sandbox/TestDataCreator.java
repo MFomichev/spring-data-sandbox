@@ -8,6 +8,7 @@ import xyz.fomichev.sandbox.model.ReadingSession;
 import xyz.fomichev.sandbox.model.Student;
 import xyz.fomichev.sandbox.repository.BookInstanceRepository;
 import xyz.fomichev.sandbox.repository.BookRepository;
+import xyz.fomichev.sandbox.repository.ClientRepository;
 import xyz.fomichev.sandbox.repository.ReadingSessionRepository;
 import xyz.fomichev.sandbox.repository.StudentRepository;
 
